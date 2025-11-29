@@ -16,6 +16,25 @@ For system-wide installation for all users:
 sudo ./install.sh
 ```
 
+## NixOS
+Add this to your flake:
+```nix
+futureCursors = {
+  url = "github:Tukankamon/Future-cursors";
+  inputs.nixpkgs.follows = "nixpkgs";
+};
+```
+Then as long as you pass Home-Manager (or normal NixOS modules) in the outputs you can do:
+
+```nix
+    home.pointerCursor = {
+        enable = true;
+        gtk.enable = true;
+        package = inputs.futureCursors.packages."x86_64-linux".future-cursors;
+        name = "future-cursors";
+    };
+```
+
 Then set the theme with your preferred desktop tools.
 
 ## Building from source
