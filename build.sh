@@ -70,4 +70,5 @@ if [ -n "$1" ]; then
     INPUT="$1"
 fi
 
-create "$INPUT$
+# Only one can be created at a time
+create "$INPUT"
