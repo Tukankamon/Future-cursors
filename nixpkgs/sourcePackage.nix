@@ -28,7 +28,9 @@ stdenvNoCC.mkDerivation {
         runHook preInstall
 
         install -dm 755 $out/share/icons/future-cursors
-        cp -r dist/${cursorColor}/* $out/share/icons/future-cursors
+        cp -rL dist/${cursorColor}/* $out/share/icons/future-cursors
+        # -L follows simlinks so there is redundany in how many times a PNG is saved
+        # but I couldnt find a way to fix it
 
         runHook postInstall
     '';
