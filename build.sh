@@ -1,9 +1,16 @@
+#!/usr/bin/env bash
 #!/bin/bash
 
 function create {
+
+	BUILD="$SRC"/../dist/$COLOR
+	OUTPUT="$BUILD"/cursors
+	ALIASES="$SRC"/cursorList
+
 	cd "$SRC"
 	mkdir -p x1 x1_25 x1_5 x2
 	cd "$SRC"/$1
+
 	find . -name "*.svg" -type f -exec sh -c 'inkscape -o "../x1/${0%.svg}.png" -w 32 -h 32 $0' {} \;
 	find . -name "*.svg" -type f -exec sh -c 'inkscape -o "../x1_25/${0%.svg}.png" -w 40 -w 40 $0' {} \;
 	find . -name "*.svg" -type f -exec sh -c 'inkscape -o "../x1_5/${0%.svg}.png" -w 48 -w 48 $0' {} \;
@@ -12,9 +19,6 @@ function create {
 	cd $SRC
 
 	# generate cursors
-	BUILD="$SRC"/../dist
-	OUTPUT="$BUILD"/cursors
-	ALIASES="$SRC"/cursorList
 
 	if [ ! -d "$BUILD" ]; then
 		mkdir "$BUILD"
@@ -44,7 +48,9 @@ function create {
 		if [ -e $TO ]; then
 			continue
 		fi
-		ln -sr "$FROM" "$TO"
+
+        ln -sr "$FROM" "$T0"
+
 	done < "$ALIASES"
 	echo -e "Generating shortcuts... DONE"
 
@@ -59,16 +65,16 @@ function create {
 	echo -e "Generating Theme Index... DONE"
 }
 
-# generate pixmaps from svg source
-SRC=$PWD/src
-THEME="Future Cursors"
-
-# Default build
-INPUT="svg"
+# Default color
+COLOR="yellow"
 
 if [ -n "$1" ]; then
-    INPUT="$1"
+    COLOR="$1"
 fi
+#
+# generate pixmaps from svg source
+SRC=$PWD/src
+THEME="Future Cursors $COLOR"
 
 # Only one can be created at a time
-create "$INPUT"
+create "svg-$COLOR"
