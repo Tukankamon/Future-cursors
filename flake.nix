@@ -23,6 +23,7 @@
       future-cursors = import ./nixpkgs/binPackage.nix {
         inherit self;
         inherit (pkgs) lib stdenvNoCC;
+        inherit cursorColor; # Allows for overrides
       };
 
       # 3. Default package set to prebuilt binaries

@@ -16,6 +16,8 @@ For system-wide installation for all users:
 sudo ./install.sh
 ```
 
+Then set the theme with your preferred desktop tools.
+
 ## NixOS
 Add this to your flake:
 ```nix
@@ -27,15 +29,19 @@ futureCursors = {
 Then as long as you pass Home-Manager (or normal NixOS modules) in the outputs you can do:
 
 ```nix
-    home.pointerCursor = {
-        enable = true;
-        gtk.enable = true;
-        package = inputs.futureCursors.packages."x86_64-linux".future-cursors;
-        name = "future-cursors";
-    };
+  home.pointerCursor = {
+    enable = true;
+    gtk.enable = true;
+    package =
+      inputs.futureCursors.packages."x86_64-linux".future-cursors
+      {
+        cursorColor = "yellow";
+      };
+    name = "future-cursors";
+  };
 ```
+Leaving cursorColor empty will default to "cyan"
 
-Then set the theme with your preferred desktop tools.
 
 ## Building from source
 You'll find everything you need to build and modify this cursor set in
