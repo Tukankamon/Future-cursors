@@ -31,5 +31,5 @@ This will generate the pixmaps and appropriate aliases.
 The freshly compiled cursor theme will be located in `dist/`
 
 ## Preview
-![Future](preview.png)
-![Future](preview-1.png)
+![Future](images/preview.png)
+![Future](images/preview-1.png)
