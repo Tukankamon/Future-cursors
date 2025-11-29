@@ -63,5 +63,11 @@ function create {
 SRC=$PWD/src
 THEME="Future Cursors"
 
-create svg
+# Default build
+INPUT="svg"
 
+if [ -n "$1" ]; then
+    INPUT="$1"
+fi
+
+create "$INPUT$
