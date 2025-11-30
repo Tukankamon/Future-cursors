@@ -63,7 +63,7 @@ function create {
 }
 
 # Default color
-COLOR="yellow"
+COLOR="cyan"
 
 if [ -n "$1" ]; then
     COLOR="$1"
