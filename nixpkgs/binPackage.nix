@@ -3,7 +3,7 @@
 {
     lib,
     stdenvNoCC,
-    cursorColor ? "cyan",
+    cursorColor ? "red",
     self
 }:
 stdenvNoCC.mkDerivation {
