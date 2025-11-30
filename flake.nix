@@ -12,22 +12,23 @@
   in
   {
     packages.${system} = {
+    /*
       # 1. Build from source
-      future-cursors-source = import ./nixpkgs/sourcePackage.nix {
-        inherit self;
-        inherit (pkgs) lib stdenvNoCC inkscape xcursorgen coreutils;
-        cursorColor = "cyan";
+      future-cursors-source = pkgs.callPackage ./nixpkgs/sourcePackage.nix {
+        #cusorColor = ?
       };
 
       # 2. Prebuilt binaries (much faster and less dependencies)
-      future-cursors = import ./nixpkgs/binPackage.nix {
-        inherit self;
-        inherit (pkgs) lib stdenvNoCC;
-        inherit cursorColor; # Allows for overrides
+      future-cursors = pkgs.callPackage ./nixpkgs/binPackage.nix {
+        #cursorColor = ?
       };
+      */
 
       # 3. Default package set to prebuilt binaries
-      default = self.packages.${system}.future-cursors;
+      default = pkgs.callPackage ./nixpkgs/sourcePackage.nix {
+        inherit self;
+        #cursorColor = ?
+      };
     };
   };
 }
