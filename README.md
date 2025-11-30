@@ -33,7 +33,7 @@ Then as long as you pass Home-Manager (or normal NixOS modules) in the outputs y
     enable = true;
     gtk.enable = true;
     package =
-      inputs.futureCursors.packages."x86_64-linux".future-cursors
+      inputs.futureCursors.packages."x86_64-linux".default.override
       {
         cursorColor = "yellow";
       };
@@ -41,6 +41,13 @@ Then as long as you pass Home-Manager (or normal NixOS modules) in the outputs y
   };
 ```
 Leaving cursorColor empty will default to "cyan"
+
+The flake exposes two packages. One that builds from source and the other that uses prebuilt xcursor binaries (default)
+You can choose to build from source by choosing
+
+```nix 
+inputs.futureCursors.packages."x86_64-linux".source
+```
 
 
 ## Building from source
