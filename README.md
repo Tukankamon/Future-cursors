@@ -7,13 +7,13 @@ To install the cursor theme simply copy the compiled theme to your icons
 directory. For local user installation:
 
 ```
-./install.sh
+./install.sh $COLOR
 ```
 
 For system-wide installation for all users:
 
 ```
-sudo ./install.sh
+sudo ./install.sh $COLOR
 ```
 
 Then set the theme with your preferred desktop tools.
