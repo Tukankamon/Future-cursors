@@ -12,22 +12,14 @@
   in
   {
     packages.${system} = {
-    /*
       # 1. Build from source
-      future-cursors-source = pkgs.callPackage ./nixpkgs/sourcePackage.nix {
-        #cusorColor = ?
+      source = pkgs.callPackage ./nixpkgs/sourcePackage.nix {
+        inherit self;
       };
-
-      # 2. Prebuilt binaries (much faster and less dependencies)
-      future-cursors = pkgs.callPackage ./nixpkgs/binPackage.nix {
-        #cursorColor = ?
-      };
-      */
 
       # 3. Default package set to prebuilt binaries
-      default = pkgs.callPackage ./nixpkgs/sourcePackage.nix {
+      default = pkgs.callPackage ./nixpkgs/binPackage.nix {
         inherit self;
-        #cursorColor = ?
       };
     };
   };
